@@ -1,0 +1,93 @@
+use practiceOne;
+
+db.createCollection("Customer");
+
+db.Customer.insertMany(
+  {
+    "customername":"Rakesh",
+    "customeremail":"rakesh.ji@gmail.com",
+    "customermobno":9815098170,
+    "customerwallet":274,
+    "Address":{
+      "customercity":"Delhi",
+      "customerpincode":600012,
+      "customeraddress":"34-B,entilla tower,ashok vihar"
+    },
+    "Orders":{
+      "orderstatus":"pending",
+      "orderamount":3500
+    },
+    "Vendors":{
+      "vendorname":"Bal Krishan",
+      "vendoremail":"bal.krishan@gmail.com",
+      "vendormobno":9217392786,
+      "vendorwallet":20387
+    },
+    "Products":{
+      "productname":"vinod pressure cooker",
+      "productcategory":"kitchen",
+      "productprice":3500
+    }
+  },
+  {
+    "customername":"Mahesh",
+    "customeremail":"mahesh.ji@gmail.com",
+    "customermobno":8976087906,
+    "customerwallet":20,
+    "Address":{
+      "customercity":"Andra Pradesh",
+      "customerpincode":782678,
+      "customeraddress":"675, pentapulli vekar"
+    },
+    "Orders":{
+      "orderstatus":"shipped",
+      "orderamount":7620
+    },
+    "Vendors":{
+      "vendorname":"Kishori laal",
+      "vendoremail":"Kishori.laal@gmail.com",
+      "vendormobno":9217392786,
+      "vendorwallet":2048
+    },
+    "Products":{
+      "productname":"vinod pressure cooker",
+      "productcategory":"kitchen",
+      "productprice":7620
+    }
+  },
+  {
+    "customername":"guddu",
+    "customeremail":"guddu.ji@gmail.com",
+    "customermobno":98632891923,
+    "customerwallet":3947,
+    "Address":{
+      "customercity":"Pune",
+      "customerpincode":437228,
+      "customeraddress":"hinjewaadi"
+    },
+    "Orders":{
+      "orderstatus":"delivered",
+      "orderamount":2934
+    },
+    "Vendors":{
+      "vendorname":"Bal Krishan",
+      "vendoremail":"bal.krishan@gmail.com",
+      "vendormobno":9217392786,
+      "vendorwallet":2930
+    },
+    "Products":{
+      "productname":"vinod pressure cooker",
+      "productcategory":"kitchen",
+      "productprice":2934
+    }
+  });
+  
+
+  db.Customer.find({"Address.customercity":{$eq:"Delhi"}}).pretty();
+  
+  db.Customer.find({},{"Products.productname":1,"Products.productprice":1}).pretty();
+  
+  db.Customer.find({"Orders.orderstatus":{$eq:"pending"}}).pretty();
+  db.Customer.find({"Address.customerpincode":{$eq:600012}}).pretty();
+  
+  
